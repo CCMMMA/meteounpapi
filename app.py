@@ -51,7 +51,7 @@ baseMaps = {
             "en":"Satellite"
         },
         "type":"tiled",
-        "url:":'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+        "url":'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
         "extras": {
                     "attribution": 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
         }
@@ -62,7 +62,7 @@ baseMaps = {
             "en":"Dark Gray"
         },
         "type": "tiled",
-        "url:": "http://{s}.sm.mapstack.stamen.com/(toner-lite,$fff[difference],$fff[@23],$fff[hsl-saturation@20])/{z}/{x}/{y}.png",
+        "url": "http://{s}.sm.mapstack.stamen.com/(toner-lite,$fff[difference],$fff[@23],$fff[hsl-saturation@20])/{z}/{x}/{y}.png",
         "extras": {
             "attribution": 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community'
         }
@@ -87,7 +87,248 @@ layers={
             "en":"Info"
         },
         "type":"icon",
+        "url": 'https://api.meteo.uniparthenope.it/apps/owm/wrf5/{prefix}/{z}/{x}/{y}.geojson?date={ncepDate}',
+        "style":{
+            "clickable": "true",
+            "color": "#00D",
+            "fillColor": "#00D",
+            "weight": "1.0",
+            "opacity": "0.3",
+            "fillOpacity": 0.2
+            },
         "extras": {
+            "popup": [
+                {"name": {"it": "Nazione", "en":"Country"}, "property": "country"},
+                {"name": {"it": "Citt&agrave;", "en":"City"}, "property": "name","eval":"name['it']"},
+                {"name": {"it": "Nvolosit&agrave;", "en": "Clouds"}, "property": "clf", "eval": "parseInt(clf * 100);","unit":"%"},
+                {"name": {"it": "Data", "en":"Date"}, "property": "dateTime"},
+                {"name": {"it": "Umidit&agrave;", "en":"Umidity"}, "property": "rh2","unit":"%"},
+                {"name": {"it": "Pressione", "en":"Pressure"}, "property": "slp","unit":"HPa"},
+                {"name": {"it": "Temperatura", "en":"Temp"}, "property": "t2c","unit":"&deg;C"},
+                {"name": {"it": "Testo", "en":"Text"}, "property": "text", "eval":"text.it"},
+                {"name": {"it": "Direzione del vento", "en":"Wind direction"}, "property": "wd10","unit":"&deg;N"},
+                {"name": {"it": "Velocit&agrave del vento", "en":"Wind Speed"}, "property": "ws10","unit":"m/s"},
+                {"name": {"it": "VentoFreddo", "en":"WindChill"}, "property": "wchill","unit":"&deg;C"},
+                {"name": {"it": "Vento", "en":"winds"}, "property": "winds"},
+            ],
+            "icons": {
+                "sunny_night.png": {
+                    "url":"http://meteo.uniparthenope.it/sites/all/themes/zircon_custom/js/images/sunny_night.png",
+                    "iconSize": [50, 50],
+                    "iconAnchor":[9, 21],
+                    "popupAnchor": [20, -17]
+                },
+                "shower1_night.png": {
+                    "url":"http://meteo.uniparthenope.it/sites/all/themes/zircon_custom/js/images/shower1_night.png",
+                    "iconSize": [50, 50],
+                    "iconAnchor":[9, 21],
+                    "popupAnchor": [20, -17]
+                },
+                "cloudy2_night.png": {
+                    "url": "http://meteo.uniparthenope.it/sites/all/themes/zircon_custom/js/images/cloudy2_night.png",
+                    "iconSize": [50, 50],
+                    "iconAnchor": [9, 21],
+                    "popupAnchor": [20, -17]
+                },
+                "shower2_night.png": {
+                    "url": "http://meteo.uniparthenope.it/sites/all/themes/zircon_custom/js/images/shower2_night.png",
+                    "iconSize": [50, 50],
+                    "iconAnchor": [9, 21],
+                    "popupAnchor": [20, -17]
+                },
+                "cloudy1_night.png": {
+                    "url": "http://meteo.uniparthenope.it/sites/all/themes/zircon_custom/js/images/cloudy1_night.png",
+                    "iconSize": [50, 50],
+                    "iconAnchor": [9, 21],
+                    "popupAnchor": [20, -17]
+                },
+                "cloudy1_night.png": {
+                    "url": "http://meteo.uniparthenope.it/sites/all/themes/zircon_custom/js/images/cloudy1_night.png",
+                    "iconSize": [50, 50],
+                    "iconAnchor": [9, 21],
+                    "popupAnchor": [20, -17]
+                },
+                "sunny.png": {
+                    "url": "http://meteo.uniparthenope.it/sites/all/themes/zircon_custom/js/images/sunny.png",
+                    "iconSize": [50, 50],
+                    "iconAnchor": [9, 21],
+                    "popupAnchor": [20, -17]
+                },
+                "cloudy1.png": {
+                    "url": "http://meteo.uniparthenope.it/sites/all/themes/zircon_custom/js/images/cloudy1.png",
+                    "iconSize": [50, 50],
+                    "iconAnchor": [9, 21],
+                    "popupAnchor": [20, -17]
+                },
+                "cloudy2.png": {
+                    "url": "http://meteo.uniparthenope.it/sites/all/themes/zircon_custom/js/images/cloudy2.png",
+                    "iconSize": [50, 50],
+                    "iconAnchor": [9, 21],
+                    "popupAnchor": [20, -17]
+                },
+                "cloudy3.png": {
+                    "url": "http://meteo.uniparthenope.it/sites/all/themes/zircon_custom/js/images/cloudy3.png",
+                    "iconSize": [50, 50],
+                    "iconAnchor": [9, 21],
+                    "popupAnchor": [20, -17]
+                },
+                "cloudy4.png": {
+                    "url": "http://meteo.uniparthenope.it/sites/all/themes/zircon_custom/js/images/cloudy4.png",
+                    "iconSize": [50, 50],
+                    "iconAnchor": [9, 21],
+                    "popupAnchor": [20, -17]
+                },
+                "cloudy5.png": {
+                    "url": "http://meteo.uniparthenope.it/sites/all/themes/zircon_custom/js/images/cloudy5.png",
+                    "iconSize": [50, 50],
+                    "iconAnchor": [9, 21],
+                    "popupAnchor": [20, -17]
+                },
+                "shower1.png": {
+                    "url": "http://meteo.uniparthenope.it/sites/all/themes/zircon_custom/js/images/shower1.png",
+                    "iconSize": [50, 50],
+                    "iconAnchor": [9, 21],
+                    "popupAnchor": [20, -17]
+                },
+                "shower2.png": {
+                    "url": "http://meteo.uniparthenope.it/sites/all/themes/zircon_custom/js/images/shower2.png",
+                    "iconSize": [50, 50],
+                    "iconAnchor": [9, 21],
+                    "popupAnchor": [20, -17]
+                },
+                "shower3.png": {
+                    "url": "http://meteo.uniparthenope.it/sites/all/themes/zircon_custom/js/images/shower3.png",
+                    "iconSize": [50, 50],
+                    "iconAnchor": [9, 21],
+                    "popupAnchor": [20, -17]
+                },
+
+            }
+        }
+    },
+"universiade2019": {
+        "name": {
+            "it":"Universiadi 2019",
+            "en":"Universiade 2019"
+        },
+        "type":"icon",
+        "url": 'https://api.meteo.uniparthenope.it/apps/owm/wrf5/UNI19/{z}/{x}/{y}.geojson?date={ncepDate}',
+        "style":{
+            "clickable": "true",
+            "color": "#00D",
+            "fillColor": "#00D",
+            "weight": "1.0",
+            "opacity": "0.3",
+            "fillOpacity": 0.2
+            },
+        "extras": {
+            "popup": [
+                {"name": {"it": "Nazione", "en":"Country"}, "property": "country"},
+                {"name": {"it": "Sito", "en":"Venue"}, "property": "name","eval":"name['it']"},
+                {"name": {"it": "Nvolosit&agrave;", "en": "Clouds"}, "property": "clf", "eval": "parseInt(clf * 100);","unit":"%"},
+                {"name": {"it": "Data", "en":"Date"}, "property": "dateTime"},
+                {"name": {"it": "Umidit&agrave;", "en":"Umidity"}, "property": "rh2","unit":"%"},
+                {"name": {"it": "Pressione", "en":"Pressure"}, "property": "slp","unit":"HPa"},
+                {"name": {"it": "Temperatura", "en":"Temp"}, "property": "t2c","unit":"&deg;C"},
+                {"name": {"it": "Testo", "en":"Text"}, "property": "text", "eval":"text['it']"},
+                {"name": {"it": "Direzione del vento", "en":"Wind direction"}, "property": "wd10","unit":"&deg;N"},
+                {"name": {"it": "Velocit&agrave del vento", "en":"Wind Speed"}, "property": "ws10","unit":"m/s"},
+                {"name": {"it": "VentoFreddo", "en":"WindChill"}, "property": "wchill","unit":"&deg;C"},
+                {"name": {"it": "Vento", "en":"winds"}, "property": "winds"},
+            ],
+            "icons": {
+                "sunny_night.png": {
+                    "url":"http://meteo.uniparthenope.it/sites/all/themes/zircon_custom/js/images/sunny_night.png",
+                    "iconSize": [50, 50],
+                    "iconAnchor":[9, 21],
+                    "popupAnchor": [20, -17]
+                },
+                "shower1_night.png": {
+                    "url":"http://meteo.uniparthenope.it/sites/all/themes/zircon_custom/js/images/shower1_night.png",
+                    "iconSize": [50, 50],
+                    "iconAnchor":[9, 21],
+                    "popupAnchor": [20, -17]
+                },
+                "cloudy2_night.png": {
+                    "url": "http://meteo.uniparthenope.it/sites/all/themes/zircon_custom/js/images/cloudy2_night.png",
+                    "iconSize": [50, 50],
+                    "iconAnchor": [9, 21],
+                    "popupAnchor": [20, -17]
+                },
+                "shower2_night.png": {
+                    "url": "http://meteo.uniparthenope.it/sites/all/themes/zircon_custom/js/images/shower2_night.png",
+                    "iconSize": [50, 50],
+                    "iconAnchor": [9, 21],
+                    "popupAnchor": [20, -17]
+                },
+                "cloudy1_night.png": {
+                    "url": "http://meteo.uniparthenope.it/sites/all/themes/zircon_custom/js/images/cloudy1_night.png",
+                    "iconSize": [50, 50],
+                    "iconAnchor": [9, 21],
+                    "popupAnchor": [20, -17]
+                },
+                "cloudy1_night.png": {
+                    "url": "http://meteo.uniparthenope.it/sites/all/themes/zircon_custom/js/images/cloudy1_night.png",
+                    "iconSize": [50, 50],
+                    "iconAnchor": [9, 21],
+                    "popupAnchor": [20, -17]
+                },
+                "sunny.png": {
+                    "url": "http://meteo.uniparthenope.it/sites/all/themes/zircon_custom/js/images/sunny.png",
+                    "iconSize": [50, 50],
+                    "iconAnchor": [9, 21],
+                    "popupAnchor": [20, -17]
+                },
+                "cloudy1.png": {
+                    "url": "http://meteo.uniparthenope.it/sites/all/themes/zircon_custom/js/images/cloudy1.png",
+                    "iconSize": [50, 50],
+                    "iconAnchor": [9, 21],
+                    "popupAnchor": [20, -17]
+                },
+                "cloudy2.png": {
+                    "url": "http://meteo.uniparthenope.it/sites/all/themes/zircon_custom/js/images/cloudy2.png",
+                    "iconSize": [50, 50],
+                    "iconAnchor": [9, 21],
+                    "popupAnchor": [20, -17]
+                },
+                "cloudy3.png": {
+                    "url": "http://meteo.uniparthenope.it/sites/all/themes/zircon_custom/js/images/cloudy3.png",
+                    "iconSize": [50, 50],
+                    "iconAnchor": [9, 21],
+                    "popupAnchor": [20, -17]
+                },
+                "cloudy4.png": {
+                    "url": "http://meteo.uniparthenope.it/sites/all/themes/zircon_custom/js/images/cloudy4.png",
+                    "iconSize": [50, 50],
+                    "iconAnchor": [9, 21],
+                    "popupAnchor": [20, -17]
+                },
+                "cloudy5.png": {
+                    "url": "http://meteo.uniparthenope.it/sites/all/themes/zircon_custom/js/images/cloudy5.png",
+                    "iconSize": [50, 50],
+                    "iconAnchor": [9, 21],
+                    "popupAnchor": [20, -17]
+                },
+                "shower1.png": {
+                    "url": "http://meteo.uniparthenope.it/sites/all/themes/zircon_custom/js/images/shower1.png",
+                    "iconSize": [50, 50],
+                    "iconAnchor": [9, 21],
+                    "popupAnchor": [20, -17]
+                },
+                "shower2.png": {
+                    "url": "http://meteo.uniparthenope.it/sites/all/themes/zircon_custom/js/images/shower2.png",
+                    "iconSize": [50, 50],
+                    "iconAnchor": [9, 21],
+                    "popupAnchor": [20, -17]
+                },
+                "shower3.png": {
+                    "url": "http://meteo.uniparthenope.it/sites/all/themes/zircon_custom/js/images/shower3.png",
+                    "iconSize": [50, 50],
+                    "iconAnchor": [9, 21],
+                    "popupAnchor": [20, -17]
+                },
+
+            }
         }
     },
     "wind": {
@@ -205,6 +446,24 @@ layers={
 }
 
 maps={
+    "universiade2019": {
+        "name": {
+            "it":"Previsioni Meteo Universiadi 2019",
+            "en":"Universiade 2019 Weather Forecast"
+        },
+        "baseMaps":[
+            { "satellite": False },
+            { "osm": True}
+        ],
+        "layers": [
+            { "cloud": True },
+            { "t2c": False },
+            { "rain": True },
+            { "snow": True },
+            { "wind": True },
+            { "universiade2019": True },
+        ]
+    },
     "weather": {
         "name": {
             "it":"Previsioni Meteo",
@@ -230,7 +489,7 @@ maps={
             "en":"Easy Weather Forecast"
         },
         "baseMaps":[
-            { "satelline": True },
+            { "satellite": True },
         ],
         "layers": [
             { "cloud": True },
